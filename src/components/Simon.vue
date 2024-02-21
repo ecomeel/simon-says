@@ -1,15 +1,20 @@
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  props: ['onPieceClick'],
+};
 </script>
 <template>
-  <div class="simon">
+  <section class="simon">
     <ul>
-      <li class="red piece"></li>
-      <li class="blue piece"></li>
-      <li class="yellow piece"></li>
-      <li class="green piece"></li>
+      <li @click="onPieceClick" class="red piece"></li>
+      <li @click="onPieceClick" class="blue piece"></li>
+      <li @click="onPieceClick" class="yellow piece"></li>
+      <li @click="onPieceClick" class="green piece"></li>
     </ul>
-  </div>
+  </section>
 </template>
 <style scoped>
 .simon {
@@ -35,24 +40,25 @@ ul {
   height: 295px;
   position: absolute;
   border-radius: 150px;
+  cursor: pointer;
 }
 .red {
-  background-color: red;
+  background-color: rgb(255, 88, 88);
   clip: rect(0, 300px, 150px, 150px);
   width: 296px;
 }
 .blue {
-  background-color: blue;
+  background-color: rgb(96, 96, 255);
   clip: rect(0, 150px, 150px, 0);
   width: 300px;
 }
 .yellow {
-  background-color: yellow;
+  background-color: rgb(253, 253, 109);
   clip: rect(150px, 150px, 300px, 0);
   width: 300px;
 }
 .green {
-  background-color: green;
+  background-color: rgb(124, 175, 124);
   clip: rect(150px, 300px, 300px, 150px);
   width: 296px;
 }
