@@ -3,16 +3,16 @@ export default {
   data() {
     return {};
   },
-  props: ['onPieceClick'],
+  props: ["onPieceClick"],
 };
 </script>
 <template>
   <section class="simon">
     <ul>
-      <li @click="onPieceClick" class="red piece"></li>
-      <li @click="onPieceClick" class="blue piece"></li>
-      <li @click="onPieceClick" class="yellow piece"></li>
-      <li @click="onPieceClick" class="green piece"></li>
+      <li @click="onPieceClick" class="red tile"></li>
+      <li @click="onPieceClick" class="blue tile"></li>
+      <li @click="onPieceClick" class="yellow tile"></li>
+      <li @click="onPieceClick" class="green tile"></li>
     </ul>
   </section>
 </template>
@@ -36,7 +36,8 @@ ul {
   margin-left: 3px;
   list-style: none;
 }
-.piece {
+.tile {
+  opacity: 0.6;
   height: 295px;
   position: absolute;
   border-radius: 150px;

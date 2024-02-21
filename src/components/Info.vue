@@ -1,12 +1,12 @@
 <script>
 export default {
-  props: ["round"],
+  props: ["round", 'onStartBtnClicked'],
 };
 </script>
 <template>
   <section class="info">
     <h2 class="title">Round: {{ round }}</h2>
-    <button class="start-btn">Start</button>
+    <button @click="onStartBtnClicked" class="start-btn">Start</button>
   </section>
 </template>
 <style scoped>

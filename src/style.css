@@ -5,3 +5,6 @@ body {
   margin: 0 auto;
   max-width: 540px;
 }
+.flash {
+  opacity: 1 !important;
+}

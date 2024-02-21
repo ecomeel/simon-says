@@ -20,18 +20,21 @@ export default {
       this.sequence = [];
       this.repeat = [];
       this.round = 0;
+
       // hide loose
-      // new Round
+      this.newRound();
     },
     newRound() {
       this.round++;
       this.sequence.push(this.getRandomNumber());
+      this.animate(this.sequence);
     },
+
     animate(sequence) {
       let i = 0;
       let interval = setInterval(() => {
         // play sound
-        lightUp(sequence[i]);
+        this.lightUp(sequence[i]);
         i++;
         if (i >= sequence.length) {
           clearInterval(interval);
@@ -39,7 +42,15 @@ export default {
         }
       }, 500);
     },
-    lightUp(tile) {},
+    lightUp(tile) {
+      console.log(tile);
+      const tileNode = document.querySelectorAll(".tile")[tile - 1];
+      tileNode.classList.add("flash");
+      console.log(tileNode);
+      setTimeout(() => {
+        tileNode.classList.remove("flash");
+      }, 300);
+    },
     getRandomNumber() {
       return Math.floor(Math.random() * 4 + 1);
     },
@@ -55,7 +66,7 @@ export default {
   <div class="container">
     <h1 class="title">Simon Says</h1>
     <Simon :onPieceClick="handlePieceClick" />
-    <Info :round="round" />
+    <Info :round="round" :onStartBtnClicked="startGame" />
     <Options />
   </div>
 </template>
