@@ -5,12 +5,18 @@ import Options from "./Options.vue";
 export default {
   data() {
     return {
+      gameModes: {
+        easy: 400,
+        normal: 1000,
+        hard: 1500,
+      },
       sequence: [],
       copySequence: [],
       repeat: [],
       round: 0,
       active: false,
       isEndGame: false,
+      selectedGameMode: 1000,
     };
   },
   components: {
@@ -26,8 +32,7 @@ export default {
       this.round = 0;
       this.active = true;
       this.isEndGame = false;
-
-      // hide loose
+      this.setGameMode();
       this.newRound();
     },
     newRound() {
@@ -36,11 +41,17 @@ export default {
         this.isEndGame = false;
         this.sequence.push(this.getRandomNumber());
         this.copy = this.sequence.slice(0);
-        console.log(this.copy);
         this.animate(this.sequence);
       }, 200);
     },
-
+    setGameMode() {
+      const gameModesNodes = document.querySelectorAll(".gameMode");
+      for (const gameMode of gameModesNodes) {
+        if (gameMode.checked) {
+          this.selectedGameMode = this.gameModes[gameMode.value];
+        }
+      }
+    },
     animate(sequence) {
       let i = 0;
       let interval = setInterval(() => {
@@ -51,7 +62,7 @@ export default {
           clearInterval(interval);
           this.activatePLayboard();
         }
-      }, 500);
+      }, this.selectedGameMode);
     },
     activatePLayboard() {
       const tilesNodes = document.querySelectorAll(".tile");
@@ -90,13 +101,12 @@ export default {
         this.isEndGame = true;
       }
     },
-
     lightUp(tile) {
       const tileNode = document.querySelectorAll(".tile")[tile - 1];
       tileNode.classList.add("flash");
       setTimeout(() => {
         tileNode.classList.remove("flash");
-      }, 300);
+      }, this.selectedGameMode);
     },
     getRandomNumber() {
       return Math.floor(Math.random() * 4 + 1);
@@ -108,11 +118,7 @@ export default {
   <div class="container">
     <h1 class="title">Simon Says</h1>
     <Simon />
-    <Info
-      :round="round"
-      :isEnd="isEndGame"
-      :onStartBtnClicked="startGame"
-    />
+    <Info :round="round" :isEnd="isEndGame" :onStartBtnClicked="startGame" />
     <Options />
   </div>
 </template>
