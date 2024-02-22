@@ -110,7 +110,7 @@ export default {
       }, this.selectedGameMode);
     },
     playSound(number) {
-      const audio = new Audio(`/sounds/${number}.mp3`);
+      const audio = new Audio(`../../public/sounds/${number}.mp3`);
       audio.play();
     },
     getRandomNumber() {
