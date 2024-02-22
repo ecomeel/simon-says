@@ -40,7 +40,8 @@ ul {
   height: 295px;
   position: absolute;
   border-radius: 150px;
-  /* cursor: pointer; */
+
+  transition: opacity linear .2s;
 }
 .red {
   background-color: rgb(255, 88, 88);

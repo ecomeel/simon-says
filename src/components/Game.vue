@@ -55,14 +55,14 @@ export default {
     animate(sequence) {
       let i = 0;
       let interval = setInterval(() => {
-        // play sound
+        this.playSound(sequence[i]);
         this.lightUp(sequence[i]);
         i++;
         if (i >= sequence.length) {
           clearInterval(interval);
           this.activatePLayboard();
         }
-      }, this.selectedGameMode);
+      }, this.selectedGameMode + 100);
     },
     activatePLayboard() {
       const tilesNodes = document.querySelectorAll(".tile");
@@ -71,10 +71,10 @@ export default {
         node.onclick = () => {
           this.handleClick(node);
           node.classList.add("flash");
+          this.playSound(node.dataset.tile);
           setTimeout(() => {
             node.classList.remove("flash");
           }, 300);
-          //playsound
         };
       }
     },
@@ -107,6 +107,10 @@ export default {
       setTimeout(() => {
         tileNode.classList.remove("flash");
       }, this.selectedGameMode);
+    },
+    playSound(number) {
+      const audio = new Audio(`/src/sounds/${number}.mp3`);
+      audio.play();
     },
     getRandomNumber() {
       return Math.floor(Math.random() * 4 + 1);
