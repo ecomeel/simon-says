@@ -8,3 +8,6 @@ body {
 .flash {
   opacity: 1 !important;
 }
+.active-tile {
+  cursor: pointer;
+}

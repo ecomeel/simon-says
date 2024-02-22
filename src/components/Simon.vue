@@ -3,16 +3,15 @@ export default {
   data() {
     return {};
   },
-  props: ["onPieceClick"],
 };
 </script>
 <template>
   <section class="simon">
     <ul>
-      <li @click="onPieceClick" class="red tile"></li>
-      <li @click="onPieceClick" class="blue tile"></li>
-      <li @click="onPieceClick" class="yellow tile"></li>
-      <li @click="onPieceClick" class="green tile"></li>
+      <li class="red tile" data-tile="1"></li>
+      <li class="blue tile" data-tile="2"></li>
+      <li class="yellow tile" data-tile="3"></li>
+      <li class="green tile" data-tile="4"></li>
     </ul>
   </section>
 </template>
@@ -41,7 +40,7 @@ ul {
   height: 295px;
   position: absolute;
   border-radius: 150px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .red {
   background-color: rgb(255, 88, 88);

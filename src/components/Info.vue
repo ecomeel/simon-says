@@ -1,11 +1,13 @@
 <script>
 export default {
-  props: ["round", 'onStartBtnClicked'],
+  props: ["round", "isEnd", "onStartBtnClicked"],
 };
 </script>
 <template>
   <section class="info">
     <h2 class="title">Round: {{ round }}</h2>
+    <p v-if="isEnd">Sorry, you lost after {{ round }} rounds</p>
+    <!-- <p>{{ isEnd }}</p> -->
     <button @click="onStartBtnClicked" class="start-btn">Start</button>
   </section>
 </template>
