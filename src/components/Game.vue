@@ -2,13 +2,14 @@
 import Simon from "./Simon.vue";
 import Info from "./Info.vue";
 import Options from "./Options.vue";
+
 export default {
   data() {
     return {
       gameModes: {
-        easy: 400,
+        easy: 1500,
         normal: 1000,
-        hard: 1500,
+        hard: 400,
       },
       sequence: [],
       copySequence: [],
@@ -133,4 +134,3 @@ export default {
   text-align: center;
 }
 </style>
-
