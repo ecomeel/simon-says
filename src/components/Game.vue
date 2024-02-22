@@ -109,7 +109,7 @@ export default {
       }, this.selectedGameMode);
     },
     playSound(number) {
-      const audio = new Audio(`/src/sounds/${number}.mp3`);
+      const audio = new Audio(`/sounds/${number}.mp3`);
       audio.play();
     },
     getRandomNumber() {
