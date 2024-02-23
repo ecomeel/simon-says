@@ -1,5 +1,3 @@
-module.exports = {
-  configureWebpack: {
-    devtool: 'source-map',
-  },
-}
+export default defineConfig({
+  __VUE_PROD_DEVTOOLS__: 'true'
+});
